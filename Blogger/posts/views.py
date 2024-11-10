@@ -37,6 +37,7 @@ def post_update_view(request:HttpRequest,post_id:int):
         if request.method=="POST":
             post_form=PostForm(request.POST, request.FILES,instance=post)
             if post_form.is_valid():
+                post_form.instance.published_at = request.POST["published_at"]
                 post_form.save()
                 return redirect("posts:post_detail_view",post_id=post.id)
             else:

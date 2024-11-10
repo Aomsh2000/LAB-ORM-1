@@ -1,5 +1,5 @@
 from django.db import models
-from django.utils.timezone import now
+
 
 # Create your models here.
 
@@ -7,7 +7,7 @@ class Post(models.Model):
     title =models.CharField(max_length=2048,default="Default title here")
     content =models.TextField(default="Default content here")
     is_published =models.BooleanField(default=True)
-    published_at =models.DateTimeField(default=now)
+    published_at =models.DateTimeField(auto_now_add=True)
     poster = models.ImageField(upload_to="images/",default='images/default.jpg',blank=False)
 
     class CategoryChoices(models.TextChoices):
